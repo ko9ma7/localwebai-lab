@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "product": "LocalWebAI Lab",
+  "updated_at": "2026-09-07",
+  "files": [
+    {
+      "path": "localwebai-complete.json",
+      "kind": "aggregate",
+      "description": "서비스 전체 공개 데이터 단일 JSON 통합본"
+    },
+    {
+      "path": "project.json",
+      "kind": "local-product-data",
+      "description": "서비스 원본 아이디어와 제품 메타데이터"
+    },
+    {
+      "path": "kernel-catalog.json",
+      "kind": "upstream-catalog",
+      "description": "검증된 Hugging Face WebGPU 207 kernel 목록"
+    },
+    {
+      "path": "kernel-catalog.csv",
+      "kind": "export",
+      "description": "207 kernel catalog CSV (UTF-8 BOM)"
+    },
+    {
+      "path": "benchmark-presets.json",
+      "kind": "local-product-data",
+      "description": "벤치마크 입력 preset과 validation limit"
+    },
+    {
+      "path": "readiness-rubric.json",
+      "kind": "local-product-data",
+      "description": "WebAI Ready 100점 점수 기준"
+    },
+    {
+      "path": "reference-benchmarks.json",
+      "kind": "upstream-reference",
+      "description": "Hugging Face 공개 M4 비교 수치"
+    },
+    {
+      "path": "compatibility.json",
+      "kind": "local-product-data",
+      "description": "런타임 호환성 체크리스트"
+    },
+    {
+      "path": "hardware-profiles.json",
+      "kind": "local-product-data",
+      "description": "UI 테스트용 합성 장치 프로필"
+    },
+    {
+      "path": "roadmap.json",
+      "kind": "local-product-data",
+      "description": "확장 기능과 측정 지표"
+    },
+    {
+      "path": "faq.json",
+      "kind": "local-product-data",
+      "description": "사용자 FAQ"
+    },
+    {
+      "path": "sources.json",
+      "kind": "upstream-reference",
+      "description": "출처 및 provenance"
+    }
+  ],
+  "schemas": [
+    "schemas/benchmark-result.schema.json",
+    "schemas/kernel-catalog.schema.json"
+  ]
+}

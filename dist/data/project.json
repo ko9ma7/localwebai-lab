@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "LocalWebAI Lab",
+  "tagline": "브라우저의 GPU만 이용해 AI 연산을 수행하고 CPU/GPU 성능과 Local AI 가능성을 테스트하는 웹서비스",
+  "origin_concept": {
+    "desktop_variant": "WPF + WebView2",
+    "web_variant": "GitHub Pages + JavaScript + WebGPU",
+    "architecture": [
+      "Web App Shell",
+      "JavaScript ES Modules",
+      "@huggingface/kernels",
+      "WebGPU",
+      "Local GPU"
+    ],
+    "wpf": {
+      "role": "Shell / 설정 / Benchmark Dashboard",
+      "runtime_host": "WebView2",
+      "webview2_role": "WebGPU runtime",
+      "javascript": "@huggingface/kernels"
+    }
+  },
+  "rating": 4,
+  "rating_max": 5,
+  "latest_technology": "Hugging Face @huggingface/kernels",
+  "upstream_status": "preview",
+  "announced_at": "2026-09-01",
+  "verified_at": "2026-09-07",
+  "core": "207개의 WebGPU AI Kernel을 Hugging Face Hub에서 직접 로딩 가능한 카탈로그와 실행 환경을 제공",
+  "why_interesting": "CUDA/Python 서버가 아니라 브라우저 자체 GPU에서 AI 연산을 실행하고 측정",
+  "first_test": "CPU vs WebGPU Matrix/Add 연산",
+  "primary_kernel": "webgpu-kernels/ai.onnx.Add",
+  "extensions": [
+    "Embedding",
+    "Image Processing",
+    "Small Vision Model",
+    "Local Classification"
+  ],
+  "creative_use": "WebGPU가 가능한 PC인지 검사하고 브라우저 로컬 AI 서비스 실행 가능성을 점수화",
+  "web_service_expansion": "URL 접속만으로 PC의 Local AI 성능 Benchmark",
+  "sample_dashboard": {
+    "gpu": "NVIDIA RTX…",
+    "webgpu": "지원됨",
+    "kernel": "ai.onnx.Add",
+    "cpu_ms": 24.2,
+    "webgpu_ms": 2.1,
+    "speedup": 11.5,
+    "webai_ready": 88
+  },
+  "sample_data_notice": "sample_dashboard 값은 초기 아이디어의 UI 예시이며 실제 측정 결과가 아닙니다.",
+  "blog_titles": [
+    "브라우저가 그래픽카드를 직접 써서 AI를 돌립니다",
+    "설치 없이 GPU AI가 가능할까? WebGPU를 웹서비스에 넣어봤습니다",
+    "Hugging Face가 공개한 207개 GPU Kernel 직접 테스트"
+  ],
+  "cautions": [
+    "WebGPU 지원은 OS/브라우저/GPU/Driver에 따라 다름",
+    "207 kernels가 207개의 완성 AI 모델을 뜻하지 않음",
+    "@huggingface/kernels package는 preview",
+    "참조 성능 수치는 특정 장치/방법론의 결과이며 사용자 PC 성능을 보장하지 않음"
+  ],
+  "repository_title": "LocalWebAI Lab — WebGPU AI Benchmark",
+  "github_project_name": "WPF WebGPU AI Benchmark",
+  "representative_image": "CPU vs WebGPU 막대그래프 + GPU 이름 + WebAI Ready Score"
+}

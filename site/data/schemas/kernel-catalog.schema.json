@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LocalWebAI Kernel Catalog",
+  "type": "object",
+  "required": [
+    "count",
+    "kernels"
+  ],
+  "properties": {
+    "count": {
+      "const": 207
+    },
+    "kernels": {
+      "type": "array",
+      "minItems": 207,
+      "maxItems": 207,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "namespace",
+          "operation",
+          "platform",
+          "category",
+          "hub_url"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "title": "WebAI Ready Score rubric",
+  "official_standard": false,
+  "total_points": 100,
+  "criteria": [
+    {
+      "id": "webgpu_api",
+      "label": "WebGPU API 존재",
+      "points": 45,
+      "condition": "\"gpu\" in navigator"
+    },
+    {
+      "id": "adapter",
+      "label": "GPU adapter 획득",
+      "points": 15,
+      "condition": "navigator.gpu.requestAdapter() 성공"
+    },
+    {
+      "id": "device",
+      "label": "GPU device 생성",
+      "points": 10,
+      "condition": "adapter.requestDevice() 성공"
+    },
+    {
+      "id": "shader_f16",
+      "label": "shader-f16 feature",
+      "points": 5,
+      "condition": "adapter/device features에 shader-f16 포함"
+    },
+    {
+      "id": "buffer_256m",
+      "label": "Max buffer ≥ 256 MiB",
+      "points": 10,
+      "condition": "maxBufferSize >= 268435456"
+    },
+    {
+      "id": "workgroups",
+      "label": "Compute workgroups ≥ 65,535",
+      "points": 8,
+      "condition": "maxComputeWorkgroupsPerDimension >= 65535"
+    },
+    {
+      "id": "hf_loader",
+      "label": "Hugging Face loader import",
+      "points": 4,
+      "condition": "@huggingface/kernels module import 성공"
+    },
+    {
+      "id": "kernel_verified",
+      "label": "Kernel 실행 확인",
+      "points": 3,
+      "condition": "선택 kernel 실행 성공"
+    }
+  ],
+  "grades": [
+    {
+      "min": 90,
+      "label": "Excellent"
+    },
+    {
+      "min": 75,
+      "label": "Ready"
+    },
+    {
+      "min": 55,
+      "label": "Limited"
+    },
+    {
+      "min": 0,
+      "label": "Unsupported"
+    }
+  ],
+  "implementation": "site/js/readiness.js"
+}

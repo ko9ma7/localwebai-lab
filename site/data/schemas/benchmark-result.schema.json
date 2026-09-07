@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LocalWebAI Benchmark Result",
+  "type": "object",
+  "required": [
+    "createdAt",
+    "rows",
+    "cols",
+    "cpuMs",
+    "gpuMs",
+    "speedup",
+    "score",
+    "engine",
+    "kernel"
+  ],
+  "properties": {
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 64
+    },
+    "cols": {
+      "type": "integer",
+      "minimum": 64
+    },
+    "warmup": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "iterations": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "cpuMs": {
+      "type": "number",
+      "minimum": 0
+    },
+    "gpuMs": {
+      "type": "number",
+      "minimum": 0
+    },
+    "speedup": {
+      "type": "number",
+      "minimum": 0
+    },
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "engine": {
+      "type": "string"
+    },
+    "kernel": {
+      "type": "string"
+    }
+  }
+}

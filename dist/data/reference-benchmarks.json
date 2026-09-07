@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "title": "Hugging Face WebGPU kernels reference benchmark",
+  "source": "Hugging Face blog — Introducing @huggingface/kernels: 200+ WebGPU Kernels for Local AI",
+  "source_url": "https://huggingface.co/blog/webgpu-kernels",
+  "published_at": "2026-09-01",
+  "hardware": "Apple M4 GPU",
+  "comparator": "ONNX Runtime Web 1.30.0-dev.20260826-b1f76d586a",
+  "methodology": "GPU work timing; setup such as kernel loading, session creation, upload, shader compilation and readback excluded.",
+  "total_operations": 207,
+  "starting_test_cases": 1756,
+  "comparable_cases": 809,
+  "wins": 629,
+  "losses": 176,
+  "ties": 4,
+  "geometric_mean_speedup": 2.57,
+  "median_speedup": 1.9,
+  "operations": [
+    {
+      "operation": "Add",
+      "compared_cases": 5,
+      "hf_kernel_ms": 0.064,
+      "ort_webgpu_ms": 0.227,
+      "speedup": 3.52
+    },
+    {
+      "operation": "MatMul",
+      "compared_cases": 29,
+      "hf_kernel_ms": 0.115,
+      "ort_webgpu_ms": 0.131,
+      "speedup": 1.14
+    },
+    {
+      "operation": "Softmax",
+      "compared_cases": 12,
+      "hf_kernel_ms": 0.114,
+      "ort_webgpu_ms": 0.24,
+      "speedup": 2.11
+    },
+    {
+      "operation": "LayerNormalization",
+      "compared_cases": 6,
+      "hf_kernel_ms": 0.061,
+      "ort_webgpu_ms": 0.135,
+      "speedup": 2.22
+    }
+  ],
+  "outlier_examples": [
+    {
+      "operation": "Einsum",
+      "case": "i,ij,j size 4096",
+      "hf_kernel_ms": 0.136,
+      "ort_webgpu_ms": 1396,
+      "speedup_note": ">10000x"
+    },
+    {
+      "operation": "CumSum",
+      "case": "row-wise [256, 4096]",
+      "hf_kernel_ms": 0.016,
+      "ort_webgpu_ms": 4.784,
+      "speedup": 301
+    }
+  ],
+  "warning": "These are upstream reference measurements on one hardware/software setup, not LocalWebAI Lab device results."
+}
