@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "id": "embedding",
+      "title": "Embedding",
+      "stage": "planned",
+      "description": "텍스트 임베딩 모델의 브라우저 실행성, 초기 로딩, 메모리 사용량 비교",
+      "metrics": [
+        "load_ms",
+        "inference_ms",
+        "tokens_per_second",
+        "memory_estimate"
+      ]
+    },
+    {
+      "id": "image-processing",
+      "title": "Image Processing",
+      "stage": "planned",
+      "description": "Resize/Normalize/Filter 계열 GPU 처리 성능 비교",
+      "metrics": [
+        "cpu_ms",
+        "webgpu_ms",
+        "speedup",
+        "pixels_per_second"
+      ]
+    },
+    {
+      "id": "small-vision-model",
+      "title": "Small Vision Model",
+      "stage": "planned",
+      "description": "경량 비전 모델의 로컬 추론 가능성 및 cold/warm latency 측정",
+      "metrics": [
+        "cold_start_ms",
+        "warm_inference_ms",
+        "model_size_mb"
+      ]
+    },
+    {
+      "id": "local-classification",
+      "title": "Local Classification",
+      "stage": "planned",
+      "description": "원본 데이터를 외부 서버로 전송하지 않는 로컬 분류 흐름",
+      "metrics": [
+        "inference_ms",
+        "confidence",
+        "privacy_mode"
+      ]
+    }
+  ]
+}

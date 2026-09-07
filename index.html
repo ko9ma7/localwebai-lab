@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>LocalWebAI Lab — 브라우저 WebGPU AI Benchmark</title>
+  <meta name="description" content="브라우저의 WebGPU와 Hugging Face WebGPU kernels를 이용해 CPU/GPU AI 연산 성능과 Local AI 실행 가능성을 측정합니다.">
+  <meta name="theme-color" content="#06101d">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="__SITE_URL__">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./assets/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="./assets/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta property="og:title" content="LocalWebAI Lab — WebGPU AI Benchmark">
+  <meta property="og:description" content="설치 없이 브라우저 GPU로 Local AI 가능성을 측정하세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="__SITE_URL__">
+  <meta property="og:image" content="__SITE_URL__assets/og-image.png">
+  <meta property="og:site_name" content="LocalWebAI Lab">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LocalWebAI Lab — WebGPU AI Benchmark">
+  <meta name="twitter:description" content="CPU vs WebGPU Matrix/Add와 WebAI Ready Score를 브라우저에서 직접 측정합니다.">
+  <meta name="twitter:image" content="__SITE_URL__assets/og-image.png">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LocalWebAI Lab","applicationCategory":"DeveloperApplication","operatingSystem":"Any OS with a WebGPU-capable browser","description":"Browser-local CPU/WebGPU benchmark and WebAI readiness dashboard using Hugging Face WebGPU kernels.","url":"__SITE_URL__"}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 바로가기</a>
+<header class="site-header"><div class="shell header-inner">
+  <a class="brand" href="./" aria-label="LocalWebAI Lab 홈"><img src="./assets/favicon.svg" alt=""><span>Local<span>WebAI</span> Lab</span></a>
+  <nav class="nav" aria-label="주요 메뉴"><a href="#benchmark">Benchmark</a><a href="#readiness">Readiness</a><a href="#data">Data</a><a href="#kernels">Kernels</a><a href="#history">History</a><a href="#faq">FAQ</a></nav>
+  <div class="header-actions">
+    <label class="sr-only" for="theme-select">테마</label><select id="theme-select" class="select" aria-label="테마 선택"><option value="dark" selected>Dark</option><option value="system">System</option><option value="light">Light</option></select>
+    <button class="button secondary" id="share-button" type="button">설정 URL 복사</button>
+  </div>
+</div></header>
+<main id="main" class="shell">
+  <section class="intro" aria-labelledby="page-title">
+    <div><h1 id="page-title">브라우저 GPU로<br><span>Local AI 성능</span>을 측정합니다.</h1><p>CPU와 WebGPU의 Matrix/Add 실행 시간을 같은 브라우저에서 비교하고, 현재 PC가 로컬 AI 워크로드를 실행하기에 얼마나 준비되어 있는지 점수화합니다.</p></div>
+    <div class="intro-meta" aria-label="프로젝트 정보"><span class="tag"><strong>★★★★☆</strong> 추천</span><span class="tag"><strong>207</strong> WebGPU kernels</span><span class="tag">공개 <strong>2026-09-01</strong></span></div>
+  </section>
+
+  <section class="dashboard" aria-label="LocalWebAI 대시보드">
+    <article class="panel architecture" id="architecture">
+      <div class="panel-header"><div><div class="eyeline">Project Architecture</div><h2>브라우저 로컬 AI 파이프라인</h2></div></div>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-icon">UI</div><div><strong>Web App Shell</strong><small>설정 · Benchmark Dashboard · 기록</small></div></div>
+        <div class="flow-step"><div class="flow-icon">JS</div><div><strong>JavaScript ES Modules</strong><small>@huggingface/kernels loader</small></div></div>
+        <div class="flow-step"><div class="flow-icon">WG</div><div><strong>WebGPU Runtime</strong><small>Compute pipeline · GPU buffer</small></div></div>
+        <div class="flow-step"><div class="flow-icon">GPU</div><div><strong>Local GPU</strong><small id="gpu-name">확인 중…</small></div></div>
+      </div>
+      <p class="architecture-foot"><strong>핵심:</strong> Hugging Face Hub의 버전된 WebGPU kernel을 브라우저에서 직접 로드합니다. 네트워크 또는 로더 오류 시에는 동일한 Add 연산의 Raw WebGPU 경로로 fallback합니다.</p>
+    </article>
+
+    <article class="panel benchmark" id="benchmark">
+      <div class="panel-header"><div><div class="eyeline">AI Compute Benchmark</div><h2>CPU vs WebGPU Matrix/Add</h2><div id="matrix-summary" class="muted" style="font-size:12px;margin-top:5px"></div></div><div class="run-controls"><button id="settings-button" class="button secondary" type="button">설정</button><button id="run-button" class="button primary" type="button">▶ Benchmark 실행</button></div></div>
+      <div class="benchmark-body">
+        <div class="status-line"><span id="run-status" class="status-pill" data-tone="idle">환경 확인 중</span><span id="progress-label" class="muted" style="font-size:12px">준비</span></div>
+        <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+        <div class="chart" role="img" aria-label="CPU와 WebGPU 실행시간 비교 차트">
+          <div class="bar-group"><div id="cpu-value" class="bar-value">—</div><div id="cpu-bar" class="bar"></div><div class="bar-label">CPU</div></div>
+          <div class="bar-group"><div id="gpu-value" class="bar-value">—</div><div id="gpu-bar" class="bar gpu"></div><div class="bar-label">WebGPU</div></div>
+          <div class="speedup-card"><div id="speedup-value" class="big">—</div><div id="speedup-caption" class="muted">측정 전</div></div>
+        </div>
+        <div id="result-note" class="result-note" aria-live="polite">첫 실행에서는 Hugging Face 모듈과 kernel을 네트워크에서 불러오기 때문에 추가 시간이 걸릴 수 있습니다. 차트의 시간은 setup을 제외한 논문식 GPU-only 수치가 아니라 호출 완료까지의 end-to-end 측정값입니다.</div>
+        <div class="kernel-strip"><div class="kernel-mini"><span>Kernel</span><strong id="kernel-id">ai.onnx.Add</strong></div><div class="kernel-mini"><span>Engine</span><strong id="kernel-engine">Hugging Face @huggingface/kernels</strong></div></div>
+      </div>
+    </article>
+
+    <aside class="panel readiness" id="readiness">
+      <div class="panel-header"><div><div class="eyeline">WebAI Ready</div><h2>로컬 AI 준비도</h2></div></div>
+      <div class="score-wrap"><div id="score-ring" class="score-ring"><div class="score-content"><small>WebAI Ready</small><strong id="score-number">0</strong><span>/100</span><em id="score-grade">Checking</em></div></div></div>
+      <div class="readiness-list">
+        <div class="metric"><span>WebGPU</span><strong id="webgpu-status">확인 중</strong></div>
+        <div class="metric"><span>shader-f16</span><strong id="f16-status">확인 중</strong></div>
+        <div class="metric"><span>Max buffer</span><strong id="buffer-limit">—</strong></div>
+        <div class="metric"><span>HF kernels</span><strong id="hf-status">확인 중</strong></div>
+        <div class="metric"><span>Loader</span><strong id="hf-probe-note">확인 중</strong></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section" id="data" aria-labelledby="data-title">
+    <div class="section-title"><div><h2 id="data-title">GitHub Pages 데이터 레이어</h2><p>서비스의 프로젝트 정보, 207개 kernel 카탈로그, benchmark preset, 점수 기준, 참조 성능과 FAQ를 정적 JSON으로 제공합니다.</p></div><div class="section-actions"><a class="button secondary" href="./data/data-manifest.json" target="_blank" rel="noopener">Manifest</a><a class="button primary" href="./data/localwebai-complete.json" target="_blank" rel="noopener">전체 데이터 JSON</a></div></div>
+    <div class="data-stats" id="data-stats" aria-live="polite"><div class="data-stat"><strong>—</strong><span>WebGPU kernels</span></div><div class="data-stat"><strong>—</strong><span>Reference cases</span></div><div class="data-stat"><strong>—</strong><span>HF geometric mean</span></div><div class="data-stat"><strong>—</strong><span>Data files</span></div></div>
+    <div class="data-layout">
+      <article class="panel data-panel"><div class="panel-header"><div><div class="eyeline">Static Data Store</div><h3>공개 데이터 파일</h3></div></div><div id="data-file-list" class="data-file-list"><div class="empty">데이터를 불러오는 중입니다.</div></div></article>
+      <article class="panel data-panel"><div class="panel-header"><div><div class="eyeline">Reference Benchmark</div><h3>Hugging Face 공개 비교 수치</h3></div></div><div id="reference-summary" class="reference-summary"><div class="empty">참조 데이터를 불러오는 중입니다.</div></div></article>
+      <article class="panel data-panel"><div class="panel-header"><div><div class="eyeline">Score Definition</div><h3>WebAI Ready 100점 기준</h3></div></div><div id="rubric-list" class="rubric-list"><div class="empty">점수 기준을 불러오는 중입니다.</div></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="kernels" aria-labelledby="kernels-title">
+    <div class="section-title"><div><h2 id="kernels-title">207 WebGPU Kernel Catalog</h2><p>Hugging Face <code>webgpu-kernels</code> 조직의 공개 repository 이름을 정적 데이터로 포함했습니다. Category는 LocalWebAI Lab에서 탐색 편의를 위해 파생한 분류입니다.</p></div><a class="button secondary" href="./data/kernel-catalog.json" target="_blank" rel="noopener">전체 JSON 열기</a></div>
+    <div class="kernel-toolbar">
+      <div class="search-field"><label for="kernel-search">Kernel 검색</label><input id="kernel-search" type="search" placeholder="예: Add, Attention, MatMul…" autocomplete="off"></div>
+      <div class="filter-field"><label for="namespace-filter">Namespace</label><select id="namespace-filter"><option value="">전체 namespace</option></select></div>
+      <div class="filter-field"><label for="category-filter">Category</label><select id="category-filter"><option value="">전체 category</option></select></div>
+      <div class="kernel-count" id="kernel-count">데이터 로딩 중…</div>
+    </div>
+    <div class="kernel-table-wrap"><table class="kernel-table"><thead><tr><th>#</th><th>Operation</th><th>Namespace</th><th>Category</th><th>Hub</th></tr></thead><tbody id="kernel-body"></tbody></table><div id="kernel-empty" class="empty" hidden>조건에 맞는 kernel이 없습니다.</div></div>
+    <div class="pagination"><button id="kernel-prev" class="button secondary" type="button">이전</button><span id="kernel-page">1 / 1</span><button id="kernel-next" class="button secondary" type="button">다음</button></div>
+  </section>
+
+  <section class="section" aria-labelledby="future-title"><div class="section-title"><div><h2 id="future-title">확장 가능한 Local AI 실험</h2><p>같은 WebGPU 진단 기반 위에서 단계적으로 확장할 수 있습니다.</p></div></div><div class="future-grid" id="roadmap-grid"><div class="empty">Roadmap 데이터를 불러오는 중입니다.</div></div></section>
+
+  <section class="section" id="history" aria-labelledby="history-title"><div class="section-title"><div><h2 id="history-title">최근 벤치마크 기록</h2><p>최대 20개 결과를 이 브라우저의 LocalStorage에만 저장합니다.</p></div><div><button id="export-button" class="button secondary" type="button">JSON 내보내기</button> <button id="clear-history" class="button ghost danger" type="button">기록 삭제</button></div></div><div class="history-wrap"><table><thead><tr><th>측정 시각</th><th>Matrix</th><th>Engine</th><th>CPU</th><th>WebGPU</th><th>SpeedUp</th><th>Score</th></tr></thead><tbody id="history-body"></tbody></table><div id="history-empty" class="empty">아직 저장된 결과가 없습니다. Benchmark를 실행하면 여기에 기록됩니다.</div></div></section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title"><div class="section-title"><div><h2 id="faq-title">FAQ</h2><p>수치를 해석할 때 중요한 제한사항입니다.</p></div></div><div class="faq" id="faq-list"><div class="empty">FAQ 데이터를 불러오는 중입니다.</div></div></section>
+</main>
+<footer class="site-footer"><div class="shell footer-inner"><div class="footer-note"><strong>LocalWebAI Lab</strong> · 브라우저 자체 GPU로 Local AI 가능성을 진단하는 GitHub Pages 웹서비스.<br>WebGPU 지원과 성능은 OS / 브라우저 / GPU / Driver에 따라 달라지며, 현재 <code>@huggingface/kernels</code> package는 preview 채널을 사용합니다.</div><div>Build Local AI Together · 2026</div></div></footer>
+
+<dialog id="settings-dialog"><form id="settings-form" method="dialog"><div class="dialog-head"><h2>Benchmark 설정</h2><button id="settings-close" class="icon-button" type="button" aria-label="닫기">×</button></div><div class="dialog-body"><div class="preset-row"><div class="field"><label for="preset-select">Preset</label><select id="preset-select"><option value="">직접 설정</option></select></div><button id="preset-apply" class="button secondary" type="button">Preset 적용</button></div><div class="field-grid"><div class="field"><label for="rows">Rows</label><input id="rows" name="rows" type="number" min="64" max="4096" step="64" required></div><div class="field"><label for="cols">Columns</label><input id="cols" name="cols" type="number" min="64" max="4096" step="64" required></div><div class="field"><label for="warmup">Warmup</label><input id="warmup" name="warmup" type="number" min="0" max="10" required></div><div class="field"><label for="iterations">Iterations</label><input id="iterations" name="iterations" type="number" min="1" max="20" required></div></div><p class="help">최대 4,194,304 elements. 큰 값은 GPU 메모리와 CPU 시간을 더 사용합니다.</p><div class="dialog-actions"><button id="settings-reset" class="button ghost" type="button">기본값</button><button class="button primary" type="submit">저장</button></div></div></form></dialog>
+<dialog id="clear-dialog"><div class="dialog-head"><h2>기록을 삭제할까요?</h2></div><div class="dialog-body"><p class="muted">이 브라우저에 저장된 LocalWebAI 측정 기록이 모두 삭제됩니다.</p><div class="dialog-actions"><button id="clear-cancel" class="button secondary" type="button">취소</button><button id="clear-confirm" class="button danger" type="button">삭제</button></div></div></dialog>
+<div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>

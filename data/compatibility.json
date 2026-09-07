@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "title": "WebGPU runtime compatibility checklist",
+  "principle": "Actual availability depends on browser, operating system, GPU and driver. Runtime detection is authoritative.",
+  "checks": [
+    {
+      "id": "secure_context",
+      "label": "보안 컨텍스트",
+      "required": true,
+      "test": "HTTPS 또는 localhost",
+      "failure": "GitHub Pages는 HTTPS이므로 배포 시 충족"
+    },
+    {
+      "id": "navigator_gpu",
+      "label": "WebGPU API",
+      "required": true,
+      "test": "\"gpu\" in navigator",
+      "failure": "브라우저/OS/GPU/Driver 조합에서 WebGPU 활성화 필요"
+    },
+    {
+      "id": "adapter",
+      "label": "GPU adapter",
+      "required": true,
+      "test": "requestAdapter()",
+      "failure": "호환 GPU adapter 없음 또는 정책/driver 제한"
+    },
+    {
+      "id": "device",
+      "label": "GPU device",
+      "required": true,
+      "test": "requestDevice()",
+      "failure": "device 생성 실패 시 GPU benchmark 중단"
+    },
+    {
+      "id": "network_hf",
+      "label": "Hugging Face kernel network access",
+      "required": false,
+      "test": "CDN module + Hub kernel load",
+      "failure": "실패 시 Raw WebGPU Add fallback"
+    },
+    {
+      "id": "shader_f16",
+      "label": "shader-f16",
+      "required": false,
+      "test": "feature detection",
+      "failure": "일부 f16 최적화 경로 제한"
+    }
+  ],
+  "notes": [
+    "사용자 에이전트 문자열만으로 지원 여부를 단정하지 않습니다.",
+    "실제 requestAdapter/requestDevice 결과를 우선합니다.",
+    "기업/학교 환경의 브라우저 정책이 WebGPU를 비활성화할 수 있습니다."
+  ]
+}

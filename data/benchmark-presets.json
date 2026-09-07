@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "default_id": "balanced",
+  "presets": [
+    {
+      "id": "quick",
+      "label": "Quick",
+      "description": "저사양/모바일 호환성 확인용",
+      "rows": 256,
+      "cols": 256,
+      "warmup": 1,
+      "iterations": 3,
+      "elements": 65536
+    },
+    {
+      "id": "balanced",
+      "label": "Balanced",
+      "description": "기본 CPU vs WebGPU 비교",
+      "rows": 1024,
+      "cols": 1024,
+      "warmup": 2,
+      "iterations": 5,
+      "elements": 1048576
+    },
+    {
+      "id": "large",
+      "label": "Large",
+      "description": "GPU 가속 효과가 더 잘 드러나는 대형 입력",
+      "rows": 2048,
+      "cols": 1024,
+      "warmup": 2,
+      "iterations": 7,
+      "elements": 2097152
+    },
+    {
+      "id": "stress",
+      "label": "Stress",
+      "description": "브라우저 메모리 사용량이 큰 상한 실험",
+      "rows": 2048,
+      "cols": 2048,
+      "warmup": 2,
+      "iterations": 5,
+      "elements": 4194304
+    }
+  ],
+  "limits": {
+    "min_rows": 64,
+    "max_rows": 4096,
+    "min_cols": 64,
+    "max_cols": 4096,
+    "max_elements": 4194304,
+    "max_warmup": 10,
+    "max_iterations": 20
+  }
+}

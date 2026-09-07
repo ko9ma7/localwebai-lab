@@ -1,0 +1,2595 @@
+{
+  "schema_version": 1,
+  "product": "LocalWebAI Lab",
+  "generated_at": "2026-09-07",
+  "description": "GitHub Pages에서 사용하는 공개 정적 데이터의 단일 파일 통합본",
+  "project": {
+    "schema_version": 1,
+    "name": "LocalWebAI Lab",
+    "tagline": "브라우저의 GPU만 이용해 AI 연산을 수행하고 CPU/GPU 성능과 Local AI 가능성을 테스트하는 웹서비스",
+    "origin_concept": {
+      "desktop_variant": "WPF + WebView2",
+      "web_variant": "GitHub Pages + JavaScript + WebGPU",
+      "architecture": [
+        "Web App Shell",
+        "JavaScript ES Modules",
+        "@huggingface/kernels",
+        "WebGPU",
+        "Local GPU"
+      ],
+      "wpf": {
+        "role": "Shell / 설정 / Benchmark Dashboard",
+        "runtime_host": "WebView2",
+        "webview2_role": "WebGPU runtime",
+        "javascript": "@huggingface/kernels"
+      }
+    },
+    "rating": 4,
+    "rating_max": 5,
+    "latest_technology": "Hugging Face @huggingface/kernels",
+    "upstream_status": "preview",
+    "announced_at": "2026-09-01",
+    "verified_at": "2026-09-07",
+    "core": "207개의 WebGPU AI Kernel을 Hugging Face Hub에서 직접 로딩 가능한 카탈로그와 실행 환경을 제공",
+    "why_interesting": "CUDA/Python 서버가 아니라 브라우저 자체 GPU에서 AI 연산을 실행하고 측정",
+    "first_test": "CPU vs WebGPU Matrix/Add 연산",
+    "primary_kernel": "webgpu-kernels/ai.onnx.Add",
+    "extensions": [
+      "Embedding",
+      "Image Processing",
+      "Small Vision Model",
+      "Local Classification"
+    ],
+    "creative_use": "WebGPU가 가능한 PC인지 검사하고 브라우저 로컬 AI 서비스 실행 가능성을 점수화",
+    "web_service_expansion": "URL 접속만으로 PC의 Local AI 성능 Benchmark",
+    "sample_dashboard": {
+      "gpu": "NVIDIA RTX…",
+      "webgpu": "지원됨",
+      "kernel": "ai.onnx.Add",
+      "cpu_ms": 24.2,
+      "webgpu_ms": 2.1,
+      "speedup": 11.5,
+      "webai_ready": 88
+    },
+    "sample_data_notice": "sample_dashboard 값은 초기 아이디어의 UI 예시이며 실제 측정 결과가 아닙니다.",
+    "blog_titles": [
+      "브라우저가 그래픽카드를 직접 써서 AI를 돌립니다",
+      "설치 없이 GPU AI가 가능할까? WebGPU를 웹서비스에 넣어봤습니다",
+      "Hugging Face가 공개한 207개 GPU Kernel 직접 테스트"
+    ],
+    "cautions": [
+      "WebGPU 지원은 OS/브라우저/GPU/Driver에 따라 다름",
+      "207 kernels가 207개의 완성 AI 모델을 뜻하지 않음",
+      "@huggingface/kernels package는 preview",
+      "참조 성능 수치는 특정 장치/방법론의 결과이며 사용자 PC 성능을 보장하지 않음"
+    ],
+    "repository_title": "LocalWebAI Lab — WebGPU AI Benchmark",
+    "github_project_name": "WPF WebGPU AI Benchmark",
+    "representative_image": "CPU vs WebGPU 막대그래프 + GPU 이름 + WebAI Ready Score"
+  },
+  "kernels": {
+    "schema_version": 1,
+    "title": "Hugging Face WebGPU Kernel Catalog",
+    "organization": "webgpu-kernels",
+    "platform": "WebGPU",
+    "license": "Apache-2.0 (upstream collection, per Hugging Face announcement)",
+    "verified_at": "2026-09-07",
+    "count": 207,
+    "source_url": "https://huggingface.co/webgpu-kernels/kernels",
+    "source_note": "Repository names verified from the public Hugging Face webgpu-kernels organization listing. Category labels are LocalWebAI Lab derived classifications, not upstream metadata.",
+    "namespaces": {
+      "ai.onnx": 175,
+      "com.microsoft": 32
+    },
+    "categories": {
+      "activation": 27,
+      "attention": 13,
+      "control-data": 9,
+      "convolution": 10,
+      "indexing": 14,
+      "logical-bitwise": 14,
+      "math": 37,
+      "matrix": 12,
+      "normalization": 12,
+      "pooling": 7,
+      "quantization": 4,
+      "reduction": 15,
+      "sequence": 5,
+      "signal-image": 8,
+      "tensor-shape": 20
+    },
+    "kernels": [
+      {
+        "index": 1,
+        "id": "webgpu-kernels/ai.onnx.Transpose",
+        "namespace": "ai.onnx",
+        "operation": "Transpose",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Transpose"
+      },
+      {
+        "index": 2,
+        "id": "webgpu-kernels/ai.onnx.Xor",
+        "namespace": "ai.onnx",
+        "operation": "Xor",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Xor"
+      },
+      {
+        "index": 3,
+        "id": "webgpu-kernels/ai.onnx.Where",
+        "namespace": "ai.onnx",
+        "operation": "Where",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Where"
+      },
+      {
+        "index": 4,
+        "id": "webgpu-kernels/ai.onnx.ScatterND",
+        "namespace": "ai.onnx",
+        "operation": "ScatterND",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ScatterND"
+      },
+      {
+        "index": 5,
+        "id": "webgpu-kernels/ai.onnx.Softmax",
+        "namespace": "ai.onnx",
+        "operation": "Softmax",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Softmax"
+      },
+      {
+        "index": 6,
+        "id": "webgpu-kernels/ai.onnx.Sub",
+        "namespace": "ai.onnx",
+        "operation": "Sub",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Sub"
+      },
+      {
+        "index": 7,
+        "id": "webgpu-kernels/ai.onnx.Unique",
+        "namespace": "ai.onnx",
+        "operation": "Unique",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Unique"
+      },
+      {
+        "index": 8,
+        "id": "webgpu-kernels/ai.onnx.ReduceSumSquare",
+        "namespace": "ai.onnx",
+        "operation": "ReduceSumSquare",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceSumSquare"
+      },
+      {
+        "index": 9,
+        "id": "webgpu-kernels/ai.onnx.Scatter",
+        "namespace": "ai.onnx",
+        "operation": "Scatter",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Scatter"
+      },
+      {
+        "index": 10,
+        "id": "webgpu-kernels/ai.onnx.ScatterElements",
+        "namespace": "ai.onnx",
+        "operation": "ScatterElements",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ScatterElements"
+      },
+      {
+        "index": 11,
+        "id": "webgpu-kernels/ai.onnx.ReduceLogSum",
+        "namespace": "ai.onnx",
+        "operation": "ReduceLogSum",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceLogSum"
+      },
+      {
+        "index": 12,
+        "id": "webgpu-kernels/ai.onnx.ReduceMin",
+        "namespace": "ai.onnx",
+        "operation": "ReduceMin",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceMin"
+      },
+      {
+        "index": 13,
+        "id": "webgpu-kernels/ai.onnx.ReduceMean",
+        "namespace": "ai.onnx",
+        "operation": "ReduceMean",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceMean"
+      },
+      {
+        "index": 14,
+        "id": "webgpu-kernels/ai.onnx.ReduceSum",
+        "namespace": "ai.onnx",
+        "operation": "ReduceSum",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceSum"
+      },
+      {
+        "index": 15,
+        "id": "webgpu-kernels/ai.onnx.ReduceMax",
+        "namespace": "ai.onnx",
+        "operation": "ReduceMax",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceMax"
+      },
+      {
+        "index": 16,
+        "id": "webgpu-kernels/ai.onnx.ReduceProd",
+        "namespace": "ai.onnx",
+        "operation": "ReduceProd",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceProd"
+      },
+      {
+        "index": 17,
+        "id": "webgpu-kernels/ai.onnx.ReduceL1",
+        "namespace": "ai.onnx",
+        "operation": "ReduceL1",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceL1"
+      },
+      {
+        "index": 18,
+        "id": "webgpu-kernels/ai.onnx.ReduceL2",
+        "namespace": "ai.onnx",
+        "operation": "ReduceL2",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceL2"
+      },
+      {
+        "index": 19,
+        "id": "webgpu-kernels/ai.onnx.NonZero",
+        "namespace": "ai.onnx",
+        "operation": "NonZero",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.NonZero"
+      },
+      {
+        "index": 20,
+        "id": "webgpu-kernels/ai.onnx.PRelu",
+        "namespace": "ai.onnx",
+        "operation": "PRelu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.PRelu"
+      },
+      {
+        "index": 21,
+        "id": "webgpu-kernels/ai.onnx.Pow",
+        "namespace": "ai.onnx",
+        "operation": "Pow",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Pow"
+      },
+      {
+        "index": 22,
+        "id": "webgpu-kernels/ai.onnx.OneHot",
+        "namespace": "ai.onnx",
+        "operation": "OneHot",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.OneHot"
+      },
+      {
+        "index": 23,
+        "id": "webgpu-kernels/ai.onnx.Pad",
+        "namespace": "ai.onnx",
+        "operation": "Pad",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Pad"
+      },
+      {
+        "index": 24,
+        "id": "webgpu-kernels/ai.onnx.Or",
+        "namespace": "ai.onnx",
+        "operation": "Or",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Or"
+      },
+      {
+        "index": 25,
+        "id": "webgpu-kernels/ai.onnx.Mul",
+        "namespace": "ai.onnx",
+        "operation": "Mul",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Mul"
+      },
+      {
+        "index": 26,
+        "id": "webgpu-kernels/ai.onnx.NonMaxSuppression",
+        "namespace": "ai.onnx",
+        "operation": "NonMaxSuppression",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.NonMaxSuppression"
+      },
+      {
+        "index": 27,
+        "id": "webgpu-kernels/ai.onnx.GreaterOrEqual",
+        "namespace": "ai.onnx",
+        "operation": "GreaterOrEqual",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.GreaterOrEqual"
+      },
+      {
+        "index": 28,
+        "id": "webgpu-kernels/ai.onnx.Less",
+        "namespace": "ai.onnx",
+        "operation": "Less",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Less"
+      },
+      {
+        "index": 29,
+        "id": "webgpu-kernels/ai.onnx.LessOrEqual",
+        "namespace": "ai.onnx",
+        "operation": "LessOrEqual",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.LessOrEqual"
+      },
+      {
+        "index": 30,
+        "id": "webgpu-kernels/ai.onnx.LogSoftmax",
+        "namespace": "ai.onnx",
+        "operation": "LogSoftmax",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.LogSoftmax"
+      },
+      {
+        "index": 31,
+        "id": "webgpu-kernels/ai.onnx.MatMul",
+        "namespace": "ai.onnx",
+        "operation": "MatMul",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.MatMul"
+      },
+      {
+        "index": 32,
+        "id": "webgpu-kernels/ai.onnx.Max",
+        "namespace": "ai.onnx",
+        "operation": "Max",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Max"
+      },
+      {
+        "index": 33,
+        "id": "webgpu-kernels/ai.onnx.MaxUnpool",
+        "namespace": "ai.onnx",
+        "operation": "MaxUnpool",
+        "platform": "WebGPU",
+        "category": "pooling",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.MaxUnpool"
+      },
+      {
+        "index": 34,
+        "id": "webgpu-kernels/ai.onnx.Min",
+        "namespace": "ai.onnx",
+        "operation": "Min",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Min"
+      },
+      {
+        "index": 35,
+        "id": "webgpu-kernels/ai.onnx.Div",
+        "namespace": "ai.onnx",
+        "operation": "Div",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Div"
+      },
+      {
+        "index": 36,
+        "id": "webgpu-kernels/ai.onnx.Einsum",
+        "namespace": "ai.onnx",
+        "operation": "Einsum",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Einsum"
+      },
+      {
+        "index": 37,
+        "id": "webgpu-kernels/ai.onnx.Equal",
+        "namespace": "ai.onnx",
+        "operation": "Equal",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Equal"
+      },
+      {
+        "index": 38,
+        "id": "webgpu-kernels/ai.onnx.GatherElements",
+        "namespace": "ai.onnx",
+        "operation": "GatherElements",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.GatherElements"
+      },
+      {
+        "index": 39,
+        "id": "webgpu-kernels/ai.onnx.GatherND",
+        "namespace": "ai.onnx",
+        "operation": "GatherND",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.GatherND"
+      },
+      {
+        "index": 40,
+        "id": "webgpu-kernels/ai.onnx.Gemm",
+        "namespace": "ai.onnx",
+        "operation": "Gemm",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Gemm"
+      },
+      {
+        "index": 41,
+        "id": "webgpu-kernels/ai.onnx.Greater",
+        "namespace": "ai.onnx",
+        "operation": "Greater",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Greater"
+      },
+      {
+        "index": 42,
+        "id": "webgpu-kernels/ai.onnx.ConvTranspose",
+        "namespace": "ai.onnx",
+        "operation": "ConvTranspose",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ConvTranspose"
+      },
+      {
+        "index": 43,
+        "id": "webgpu-kernels/ai.onnx.And",
+        "namespace": "ai.onnx",
+        "operation": "And",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.And"
+      },
+      {
+        "index": 44,
+        "id": "webgpu-kernels/ai.onnx.Add",
+        "namespace": "ai.onnx",
+        "operation": "Add",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Add"
+      },
+      {
+        "index": 45,
+        "id": "webgpu-kernels/ai.onnx.Attention",
+        "namespace": "ai.onnx",
+        "operation": "Attention",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Attention"
+      },
+      {
+        "index": 46,
+        "id": "webgpu-kernels/ai.onnx.BitwiseOr",
+        "namespace": "ai.onnx",
+        "operation": "BitwiseOr",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.BitwiseOr"
+      },
+      {
+        "index": 47,
+        "id": "webgpu-kernels/ai.onnx.BitwiseAnd",
+        "namespace": "ai.onnx",
+        "operation": "BitwiseAnd",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.BitwiseAnd"
+      },
+      {
+        "index": 48,
+        "id": "webgpu-kernels/ai.onnx.BitwiseXor",
+        "namespace": "ai.onnx",
+        "operation": "BitwiseXor",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.BitwiseXor"
+      },
+      {
+        "index": 49,
+        "id": "webgpu-kernels/ai.onnx.Concat",
+        "namespace": "ai.onnx",
+        "operation": "Concat",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Concat"
+      },
+      {
+        "index": 50,
+        "id": "webgpu-kernels/ai.onnx.Conv",
+        "namespace": "ai.onnx",
+        "operation": "Conv",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Conv"
+      },
+      {
+        "index": 51,
+        "id": "webgpu-kernels/com.microsoft.QMoE",
+        "namespace": "com.microsoft",
+        "operation": "QMoE",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.QMoE"
+      },
+      {
+        "index": 52,
+        "id": "webgpu-kernels/com.microsoft.MatMulNBits",
+        "namespace": "com.microsoft",
+        "operation": "MatMulNBits",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.MatMulNBits"
+      },
+      {
+        "index": 53,
+        "id": "webgpu-kernels/com.microsoft.MRotaryEmbedding",
+        "namespace": "com.microsoft",
+        "operation": "MRotaryEmbedding",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.MRotaryEmbedding"
+      },
+      {
+        "index": 54,
+        "id": "webgpu-kernels/com.microsoft.MultiHeadAttention",
+        "namespace": "com.microsoft",
+        "operation": "MultiHeadAttention",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.MultiHeadAttention"
+      },
+      {
+        "index": 55,
+        "id": "webgpu-kernels/com.microsoft.SparseAttention",
+        "namespace": "com.microsoft",
+        "operation": "SparseAttention",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.SparseAttention"
+      },
+      {
+        "index": 56,
+        "id": "webgpu-kernels/com.microsoft.BiasAdd",
+        "namespace": "com.microsoft",
+        "operation": "BiasAdd",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.BiasAdd"
+      },
+      {
+        "index": 57,
+        "id": "webgpu-kernels/com.microsoft.FusedConv",
+        "namespace": "com.microsoft",
+        "operation": "FusedConv",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.FusedConv"
+      },
+      {
+        "index": 58,
+        "id": "webgpu-kernels/com.microsoft.GatedAdd",
+        "namespace": "com.microsoft",
+        "operation": "GatedAdd",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.GatedAdd"
+      },
+      {
+        "index": 59,
+        "id": "webgpu-kernels/com.microsoft.FusedGemm",
+        "namespace": "com.microsoft",
+        "operation": "FusedGemm",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.FusedGemm"
+      },
+      {
+        "index": 60,
+        "id": "webgpu-kernels/com.microsoft.FusedMatMul",
+        "namespace": "com.microsoft",
+        "operation": "FusedMatMul",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.FusedMatMul"
+      },
+      {
+        "index": 61,
+        "id": "webgpu-kernels/com.microsoft.GemmFastGelu",
+        "namespace": "com.microsoft",
+        "operation": "GemmFastGelu",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.GemmFastGelu"
+      },
+      {
+        "index": 62,
+        "id": "webgpu-kernels/com.microsoft.GroupQueryAttention",
+        "namespace": "com.microsoft",
+        "operation": "GroupQueryAttention",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.GroupQueryAttention"
+      },
+      {
+        "index": 63,
+        "id": "webgpu-kernels/com.microsoft.MatMulBnb4",
+        "namespace": "com.microsoft",
+        "operation": "MatMulBnb4",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.MatMulBnb4"
+      },
+      {
+        "index": 64,
+        "id": "webgpu-kernels/com.microsoft.VarlenCausalConvWithState",
+        "namespace": "com.microsoft",
+        "operation": "VarlenCausalConvWithState",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.VarlenCausalConvWithState"
+      },
+      {
+        "index": 65,
+        "id": "webgpu-kernels/com.microsoft.PagedAttention",
+        "namespace": "com.microsoft",
+        "operation": "PagedAttention",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.PagedAttention"
+      },
+      {
+        "index": 66,
+        "id": "webgpu-kernels/com.microsoft.SkipSimplifiedLayerNormalization",
+        "namespace": "com.microsoft",
+        "operation": "SkipSimplifiedLayerNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.SkipSimplifiedLayerNormalization"
+      },
+      {
+        "index": 67,
+        "id": "webgpu-kernels/com.microsoft.QuickGelu",
+        "namespace": "com.microsoft",
+        "operation": "QuickGelu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.QuickGelu"
+      },
+      {
+        "index": 68,
+        "id": "webgpu-kernels/com.microsoft.SkipLayerNormalization",
+        "namespace": "com.microsoft",
+        "operation": "SkipLayerNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.SkipLayerNormalization"
+      },
+      {
+        "index": 69,
+        "id": "webgpu-kernels/com.microsoft.MoE",
+        "namespace": "com.microsoft",
+        "operation": "MoE",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.MoE"
+      },
+      {
+        "index": 70,
+        "id": "webgpu-kernels/com.microsoft.MatMulNBitsMlp",
+        "namespace": "com.microsoft",
+        "operation": "MatMulNBitsMlp",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.MatMulNBitsMlp"
+      },
+      {
+        "index": 71,
+        "id": "webgpu-kernels/com.microsoft.MatMulNBitsQkv",
+        "namespace": "com.microsoft",
+        "operation": "MatMulNBitsQkv",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.MatMulNBitsQkv"
+      },
+      {
+        "index": 72,
+        "id": "webgpu-kernels/com.microsoft.LinearAttentionGate",
+        "namespace": "com.microsoft",
+        "operation": "LinearAttentionGate",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.LinearAttentionGate"
+      },
+      {
+        "index": 73,
+        "id": "webgpu-kernels/com.microsoft.LinearAttention",
+        "namespace": "com.microsoft",
+        "operation": "LinearAttention",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.LinearAttention"
+      },
+      {
+        "index": 74,
+        "id": "webgpu-kernels/com.microsoft.GemmaRotaryEmbedding",
+        "namespace": "com.microsoft",
+        "operation": "GemmaRotaryEmbedding",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.GemmaRotaryEmbedding"
+      },
+      {
+        "index": 75,
+        "id": "webgpu-kernels/com.microsoft.GatherBlockQuantized",
+        "namespace": "com.microsoft",
+        "operation": "GatherBlockQuantized",
+        "platform": "WebGPU",
+        "category": "quantization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.GatherBlockQuantized"
+      },
+      {
+        "index": 76,
+        "id": "webgpu-kernels/com.microsoft.Gelu",
+        "namespace": "com.microsoft",
+        "operation": "Gelu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.Gelu"
+      },
+      {
+        "index": 77,
+        "id": "webgpu-kernels/com.microsoft.BiasSoftmax",
+        "namespace": "com.microsoft",
+        "operation": "BiasSoftmax",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.BiasSoftmax"
+      },
+      {
+        "index": 78,
+        "id": "webgpu-kernels/com.microsoft.BiasSplitGelu",
+        "namespace": "com.microsoft",
+        "operation": "BiasSplitGelu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.BiasSplitGelu"
+      },
+      {
+        "index": 79,
+        "id": "webgpu-kernels/com.microsoft.CausalConvWithState",
+        "namespace": "com.microsoft",
+        "operation": "CausalConvWithState",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.CausalConvWithState"
+      },
+      {
+        "index": 80,
+        "id": "webgpu-kernels/com.microsoft.FastGelu",
+        "namespace": "com.microsoft",
+        "operation": "FastGelu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.FastGelu"
+      },
+      {
+        "index": 81,
+        "id": "webgpu-kernels/com.microsoft.BiasGelu",
+        "namespace": "com.microsoft",
+        "operation": "BiasGelu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.BiasGelu"
+      },
+      {
+        "index": 82,
+        "id": "webgpu-kernels/com.microsoft.EmbedLayerNormalization",
+        "namespace": "com.microsoft",
+        "operation": "EmbedLayerNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/com.microsoft.EmbedLayerNormalization"
+      },
+      {
+        "index": 83,
+        "id": "webgpu-kernels/ai.onnx.Trilu",
+        "namespace": "ai.onnx",
+        "operation": "Trilu",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Trilu"
+      },
+      {
+        "index": 84,
+        "id": "webgpu-kernels/ai.onnx.Unsqueeze",
+        "namespace": "ai.onnx",
+        "operation": "Unsqueeze",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Unsqueeze"
+      },
+      {
+        "index": 85,
+        "id": "webgpu-kernels/ai.onnx.Upsample",
+        "namespace": "ai.onnx",
+        "operation": "Upsample",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Upsample"
+      },
+      {
+        "index": 86,
+        "id": "webgpu-kernels/ai.onnx.Tile",
+        "namespace": "ai.onnx",
+        "operation": "Tile",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Tile"
+      },
+      {
+        "index": 87,
+        "id": "webgpu-kernels/ai.onnx.TopK",
+        "namespace": "ai.onnx",
+        "operation": "TopK",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.TopK"
+      },
+      {
+        "index": 88,
+        "id": "webgpu-kernels/ai.onnx.Tanh",
+        "namespace": "ai.onnx",
+        "operation": "Tanh",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Tanh"
+      },
+      {
+        "index": 89,
+        "id": "webgpu-kernels/ai.onnx.ThresholdedRelu",
+        "namespace": "ai.onnx",
+        "operation": "ThresholdedRelu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ThresholdedRelu"
+      },
+      {
+        "index": 90,
+        "id": "webgpu-kernels/ai.onnx.TensorScatter",
+        "namespace": "ai.onnx",
+        "operation": "TensorScatter",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.TensorScatter"
+      },
+      {
+        "index": 91,
+        "id": "webgpu-kernels/ai.onnx.SwiGLU",
+        "namespace": "ai.onnx",
+        "operation": "SwiGLU",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.SwiGLU"
+      },
+      {
+        "index": 92,
+        "id": "webgpu-kernels/ai.onnx.Swish",
+        "namespace": "ai.onnx",
+        "operation": "Swish",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Swish"
+      },
+      {
+        "index": 93,
+        "id": "webgpu-kernels/ai.onnx.Sum",
+        "namespace": "ai.onnx",
+        "operation": "Sum",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Sum"
+      },
+      {
+        "index": 94,
+        "id": "webgpu-kernels/ai.onnx.Tan",
+        "namespace": "ai.onnx",
+        "operation": "Tan",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Tan"
+      },
+      {
+        "index": 95,
+        "id": "webgpu-kernels/ai.onnx.SplitToSequence",
+        "namespace": "ai.onnx",
+        "operation": "SplitToSequence",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.SplitToSequence"
+      },
+      {
+        "index": 96,
+        "id": "webgpu-kernels/ai.onnx.Sqrt",
+        "namespace": "ai.onnx",
+        "operation": "Sqrt",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Sqrt"
+      },
+      {
+        "index": 97,
+        "id": "webgpu-kernels/ai.onnx.STFT",
+        "namespace": "ai.onnx",
+        "operation": "STFT",
+        "platform": "WebGPU",
+        "category": "signal-image",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.STFT"
+      },
+      {
+        "index": 98,
+        "id": "webgpu-kernels/ai.onnx.SpaceToDepth",
+        "namespace": "ai.onnx",
+        "operation": "SpaceToDepth",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.SpaceToDepth"
+      },
+      {
+        "index": 99,
+        "id": "webgpu-kernels/ai.onnx.Split",
+        "namespace": "ai.onnx",
+        "operation": "Split",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Split"
+      },
+      {
+        "index": 100,
+        "id": "webgpu-kernels/ai.onnx.Softsign",
+        "namespace": "ai.onnx",
+        "operation": "Softsign",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Softsign"
+      },
+      {
+        "index": 101,
+        "id": "webgpu-kernels/ai.onnx.Squeeze",
+        "namespace": "ai.onnx",
+        "operation": "Squeeze",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Squeeze"
+      },
+      {
+        "index": 102,
+        "id": "webgpu-kernels/ai.onnx.Sinh",
+        "namespace": "ai.onnx",
+        "operation": "Sinh",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Sinh"
+      },
+      {
+        "index": 103,
+        "id": "webgpu-kernels/ai.onnx.Size",
+        "namespace": "ai.onnx",
+        "operation": "Size",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Size"
+      },
+      {
+        "index": 104,
+        "id": "webgpu-kernels/ai.onnx.Softplus",
+        "namespace": "ai.onnx",
+        "operation": "Softplus",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Softplus"
+      },
+      {
+        "index": 105,
+        "id": "webgpu-kernels/ai.onnx.SimplifiedLayerNormalization",
+        "namespace": "ai.onnx",
+        "operation": "SimplifiedLayerNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.SimplifiedLayerNormalization"
+      },
+      {
+        "index": 106,
+        "id": "webgpu-kernels/ai.onnx.Sign",
+        "namespace": "ai.onnx",
+        "operation": "Sign",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Sign"
+      },
+      {
+        "index": 107,
+        "id": "webgpu-kernels/ai.onnx.Sin",
+        "namespace": "ai.onnx",
+        "operation": "Sin",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Sin"
+      },
+      {
+        "index": 108,
+        "id": "webgpu-kernels/ai.onnx.Slice",
+        "namespace": "ai.onnx",
+        "operation": "Slice",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Slice"
+      },
+      {
+        "index": 109,
+        "id": "webgpu-kernels/ai.onnx.Sigmoid",
+        "namespace": "ai.onnx",
+        "operation": "Sigmoid",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Sigmoid"
+      },
+      {
+        "index": 110,
+        "id": "webgpu-kernels/ai.onnx.Shrink",
+        "namespace": "ai.onnx",
+        "operation": "Shrink",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Shrink"
+      },
+      {
+        "index": 111,
+        "id": "webgpu-kernels/ai.onnx.Shape",
+        "namespace": "ai.onnx",
+        "operation": "Shape",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Shape"
+      },
+      {
+        "index": 112,
+        "id": "webgpu-kernels/ai.onnx.Selu",
+        "namespace": "ai.onnx",
+        "operation": "Selu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Selu"
+      },
+      {
+        "index": 113,
+        "id": "webgpu-kernels/ai.onnx.RotaryEmbedding",
+        "namespace": "ai.onnx",
+        "operation": "RotaryEmbedding",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.RotaryEmbedding"
+      },
+      {
+        "index": 114,
+        "id": "webgpu-kernels/ai.onnx.Round",
+        "namespace": "ai.onnx",
+        "operation": "Round",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Round"
+      },
+      {
+        "index": 115,
+        "id": "webgpu-kernels/ai.onnx.Scan",
+        "namespace": "ai.onnx",
+        "operation": "Scan",
+        "platform": "WebGPU",
+        "category": "sequence",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Scan"
+      },
+      {
+        "index": 116,
+        "id": "webgpu-kernels/ai.onnx.RoiAlign",
+        "namespace": "ai.onnx",
+        "operation": "RoiAlign",
+        "platform": "WebGPU",
+        "category": "signal-image",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.RoiAlign"
+      },
+      {
+        "index": 117,
+        "id": "webgpu-kernels/ai.onnx.Resize",
+        "namespace": "ai.onnx",
+        "operation": "Resize",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Resize"
+      },
+      {
+        "index": 118,
+        "id": "webgpu-kernels/ai.onnx.RMSNormalization",
+        "namespace": "ai.onnx",
+        "operation": "RMSNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.RMSNormalization"
+      },
+      {
+        "index": 119,
+        "id": "webgpu-kernels/ai.onnx.ReverseSequence",
+        "namespace": "ai.onnx",
+        "operation": "ReverseSequence",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReverseSequence"
+      },
+      {
+        "index": 120,
+        "id": "webgpu-kernels/ai.onnx.RNN",
+        "namespace": "ai.onnx",
+        "operation": "RNN",
+        "platform": "WebGPU",
+        "category": "sequence",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.RNN"
+      },
+      {
+        "index": 121,
+        "id": "webgpu-kernels/ai.onnx.Relu",
+        "namespace": "ai.onnx",
+        "operation": "Relu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Relu"
+      },
+      {
+        "index": 122,
+        "id": "webgpu-kernels/ai.onnx.Reshape",
+        "namespace": "ai.onnx",
+        "operation": "Reshape",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Reshape"
+      },
+      {
+        "index": 123,
+        "id": "webgpu-kernels/ai.onnx.ReduceLogSumExp",
+        "namespace": "ai.onnx",
+        "operation": "ReduceLogSumExp",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ReduceLogSumExp"
+      },
+      {
+        "index": 124,
+        "id": "webgpu-kernels/ai.onnx.QuantizeLinear",
+        "namespace": "ai.onnx",
+        "operation": "QuantizeLinear",
+        "platform": "WebGPU",
+        "category": "quantization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.QuantizeLinear"
+      },
+      {
+        "index": 125,
+        "id": "webgpu-kernels/ai.onnx.Range",
+        "namespace": "ai.onnx",
+        "operation": "Range",
+        "platform": "WebGPU",
+        "category": "control-data",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Range"
+      },
+      {
+        "index": 126,
+        "id": "webgpu-kernels/ai.onnx.Reciprocal",
+        "namespace": "ai.onnx",
+        "operation": "Reciprocal",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Reciprocal"
+      },
+      {
+        "index": 127,
+        "id": "webgpu-kernels/ai.onnx.QLinearConv",
+        "namespace": "ai.onnx",
+        "operation": "QLinearConv",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.QLinearConv"
+      },
+      {
+        "index": 128,
+        "id": "webgpu-kernels/ai.onnx.QLinearMatMul",
+        "namespace": "ai.onnx",
+        "operation": "QLinearMatMul",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.QLinearMatMul"
+      },
+      {
+        "index": 129,
+        "id": "webgpu-kernels/ai.onnx.Not",
+        "namespace": "ai.onnx",
+        "operation": "Not",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Not"
+      },
+      {
+        "index": 130,
+        "id": "webgpu-kernels/ai.onnx.Neg",
+        "namespace": "ai.onnx",
+        "operation": "Neg",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Neg"
+      },
+      {
+        "index": 131,
+        "id": "webgpu-kernels/ai.onnx.MeanVarianceNormalization",
+        "namespace": "ai.onnx",
+        "operation": "MeanVarianceNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.MeanVarianceNormalization"
+      },
+      {
+        "index": 132,
+        "id": "webgpu-kernels/ai.onnx.Mod",
+        "namespace": "ai.onnx",
+        "operation": "Mod",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Mod"
+      },
+      {
+        "index": 133,
+        "id": "webgpu-kernels/ai.onnx.Mish",
+        "namespace": "ai.onnx",
+        "operation": "Mish",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Mish"
+      },
+      {
+        "index": 134,
+        "id": "webgpu-kernels/ai.onnx.Mean",
+        "namespace": "ai.onnx",
+        "operation": "Mean",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Mean"
+      },
+      {
+        "index": 135,
+        "id": "webgpu-kernels/ai.onnx.MaxPool",
+        "namespace": "ai.onnx",
+        "operation": "MaxPool",
+        "platform": "WebGPU",
+        "category": "pooling",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.MaxPool"
+      },
+      {
+        "index": 136,
+        "id": "webgpu-kernels/ai.onnx.MatMulInteger",
+        "namespace": "ai.onnx",
+        "operation": "MatMulInteger",
+        "platform": "WebGPU",
+        "category": "matrix",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.MatMulInteger"
+      },
+      {
+        "index": 137,
+        "id": "webgpu-kernels/ai.onnx.LRN",
+        "namespace": "ai.onnx",
+        "operation": "LRN",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.LRN"
+      },
+      {
+        "index": 138,
+        "id": "webgpu-kernels/ai.onnx.LSTM",
+        "namespace": "ai.onnx",
+        "operation": "LSTM",
+        "platform": "WebGPU",
+        "category": "sequence",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.LSTM"
+      },
+      {
+        "index": 139,
+        "id": "webgpu-kernels/ai.onnx.LpPool",
+        "namespace": "ai.onnx",
+        "operation": "LpPool",
+        "platform": "WebGPU",
+        "category": "pooling",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.LpPool"
+      },
+      {
+        "index": 140,
+        "id": "webgpu-kernels/ai.onnx.Loop",
+        "namespace": "ai.onnx",
+        "operation": "Loop",
+        "platform": "WebGPU",
+        "category": "sequence",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Loop"
+      },
+      {
+        "index": 141,
+        "id": "webgpu-kernels/ai.onnx.Log",
+        "namespace": "ai.onnx",
+        "operation": "Log",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Log"
+      },
+      {
+        "index": 142,
+        "id": "webgpu-kernels/ai.onnx.LpNormalization",
+        "namespace": "ai.onnx",
+        "operation": "LpNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.LpNormalization"
+      },
+      {
+        "index": 143,
+        "id": "webgpu-kernels/ai.onnx.LayerNormalization",
+        "namespace": "ai.onnx",
+        "operation": "LayerNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.LayerNormalization"
+      },
+      {
+        "index": 144,
+        "id": "webgpu-kernels/ai.onnx.LinearAttention",
+        "namespace": "ai.onnx",
+        "operation": "LinearAttention",
+        "platform": "WebGPU",
+        "category": "attention",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.LinearAttention"
+      },
+      {
+        "index": 145,
+        "id": "webgpu-kernels/ai.onnx.IsNaN",
+        "namespace": "ai.onnx",
+        "operation": "IsNaN",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.IsNaN"
+      },
+      {
+        "index": 146,
+        "id": "webgpu-kernels/ai.onnx.IsInf",
+        "namespace": "ai.onnx",
+        "operation": "IsInf",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.IsInf"
+      },
+      {
+        "index": 147,
+        "id": "webgpu-kernels/ai.onnx.LeakyRelu",
+        "namespace": "ai.onnx",
+        "operation": "LeakyRelu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.LeakyRelu"
+      },
+      {
+        "index": 148,
+        "id": "webgpu-kernels/ai.onnx.HardSwish",
+        "namespace": "ai.onnx",
+        "operation": "HardSwish",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.HardSwish"
+      },
+      {
+        "index": 149,
+        "id": "webgpu-kernels/ai.onnx.InstanceNormalization",
+        "namespace": "ai.onnx",
+        "operation": "InstanceNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.InstanceNormalization"
+      },
+      {
+        "index": 150,
+        "id": "webgpu-kernels/ai.onnx.If",
+        "namespace": "ai.onnx",
+        "operation": "If",
+        "platform": "WebGPU",
+        "category": "control-data",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.If"
+      },
+      {
+        "index": 151,
+        "id": "webgpu-kernels/ai.onnx.Identity",
+        "namespace": "ai.onnx",
+        "operation": "Identity",
+        "platform": "WebGPU",
+        "category": "control-data",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Identity"
+      },
+      {
+        "index": 152,
+        "id": "webgpu-kernels/ai.onnx.GRU",
+        "namespace": "ai.onnx",
+        "operation": "GRU",
+        "platform": "WebGPU",
+        "category": "sequence",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.GRU"
+      },
+      {
+        "index": 153,
+        "id": "webgpu-kernels/ai.onnx.Hardmax",
+        "namespace": "ai.onnx",
+        "operation": "Hardmax",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Hardmax"
+      },
+      {
+        "index": 154,
+        "id": "webgpu-kernels/ai.onnx.HannWindow",
+        "namespace": "ai.onnx",
+        "operation": "HannWindow",
+        "platform": "WebGPU",
+        "category": "signal-image",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.HannWindow"
+      },
+      {
+        "index": 155,
+        "id": "webgpu-kernels/ai.onnx.HardSigmoid",
+        "namespace": "ai.onnx",
+        "operation": "HardSigmoid",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.HardSigmoid"
+      },
+      {
+        "index": 156,
+        "id": "webgpu-kernels/ai.onnx.GridSample",
+        "namespace": "ai.onnx",
+        "operation": "GridSample",
+        "platform": "WebGPU",
+        "category": "signal-image",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.GridSample"
+      },
+      {
+        "index": 157,
+        "id": "webgpu-kernels/ai.onnx.GroupNormalization",
+        "namespace": "ai.onnx",
+        "operation": "GroupNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.GroupNormalization"
+      },
+      {
+        "index": 158,
+        "id": "webgpu-kernels/ai.onnx.HammingWindow",
+        "namespace": "ai.onnx",
+        "operation": "HammingWindow",
+        "platform": "WebGPU",
+        "category": "signal-image",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.HammingWindow"
+      },
+      {
+        "index": 159,
+        "id": "webgpu-kernels/ai.onnx.GlobalMaxPool",
+        "namespace": "ai.onnx",
+        "operation": "GlobalMaxPool",
+        "platform": "WebGPU",
+        "category": "pooling",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.GlobalMaxPool"
+      },
+      {
+        "index": 160,
+        "id": "webgpu-kernels/ai.onnx.Gelu",
+        "namespace": "ai.onnx",
+        "operation": "Gelu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Gelu"
+      },
+      {
+        "index": 161,
+        "id": "webgpu-kernels/ai.onnx.GlobalLpPool",
+        "namespace": "ai.onnx",
+        "operation": "GlobalLpPool",
+        "platform": "WebGPU",
+        "category": "pooling",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.GlobalLpPool"
+      },
+      {
+        "index": 162,
+        "id": "webgpu-kernels/ai.onnx.GlobalAveragePool",
+        "namespace": "ai.onnx",
+        "operation": "GlobalAveragePool",
+        "platform": "WebGPU",
+        "category": "pooling",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.GlobalAveragePool"
+      },
+      {
+        "index": 163,
+        "id": "webgpu-kernels/ai.onnx.Floor",
+        "namespace": "ai.onnx",
+        "operation": "Floor",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Floor"
+      },
+      {
+        "index": 164,
+        "id": "webgpu-kernels/ai.onnx.Gather",
+        "namespace": "ai.onnx",
+        "operation": "Gather",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Gather"
+      },
+      {
+        "index": 165,
+        "id": "webgpu-kernels/ai.onnx.Exp",
+        "namespace": "ai.onnx",
+        "operation": "Exp",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Exp"
+      },
+      {
+        "index": 166,
+        "id": "webgpu-kernels/ai.onnx.Elu",
+        "namespace": "ai.onnx",
+        "operation": "Elu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Elu"
+      },
+      {
+        "index": 167,
+        "id": "webgpu-kernels/ai.onnx.Erf",
+        "namespace": "ai.onnx",
+        "operation": "Erf",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Erf"
+      },
+      {
+        "index": 168,
+        "id": "webgpu-kernels/ai.onnx.Flatten",
+        "namespace": "ai.onnx",
+        "operation": "Flatten",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Flatten"
+      },
+      {
+        "index": 169,
+        "id": "webgpu-kernels/ai.onnx.EyeLike",
+        "namespace": "ai.onnx",
+        "operation": "EyeLike",
+        "platform": "WebGPU",
+        "category": "control-data",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.EyeLike"
+      },
+      {
+        "index": 170,
+        "id": "webgpu-kernels/ai.onnx.Expand",
+        "namespace": "ai.onnx",
+        "operation": "Expand",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Expand"
+      },
+      {
+        "index": 171,
+        "id": "webgpu-kernels/ai.onnx.DequantizeLinear",
+        "namespace": "ai.onnx",
+        "operation": "DequantizeLinear",
+        "platform": "WebGPU",
+        "category": "quantization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.DequantizeLinear"
+      },
+      {
+        "index": 172,
+        "id": "webgpu-kernels/ai.onnx.DeformConv",
+        "namespace": "ai.onnx",
+        "operation": "DeformConv",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.DeformConv"
+      },
+      {
+        "index": 173,
+        "id": "webgpu-kernels/ai.onnx.DynamicQuantizeLinear",
+        "namespace": "ai.onnx",
+        "operation": "DynamicQuantizeLinear",
+        "platform": "WebGPU",
+        "category": "quantization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.DynamicQuantizeLinear"
+      },
+      {
+        "index": 174,
+        "id": "webgpu-kernels/ai.onnx.Dropout",
+        "namespace": "ai.onnx",
+        "operation": "Dropout",
+        "platform": "WebGPU",
+        "category": "control-data",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Dropout"
+      },
+      {
+        "index": 175,
+        "id": "webgpu-kernels/ai.onnx.DFT",
+        "namespace": "ai.onnx",
+        "operation": "DFT",
+        "platform": "WebGPU",
+        "category": "signal-image",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.DFT"
+      },
+      {
+        "index": 176,
+        "id": "webgpu-kernels/ai.onnx.DepthToSpace",
+        "namespace": "ai.onnx",
+        "operation": "DepthToSpace",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.DepthToSpace"
+      },
+      {
+        "index": 177,
+        "id": "webgpu-kernels/ai.onnx.CumSum",
+        "namespace": "ai.onnx",
+        "operation": "CumSum",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.CumSum"
+      },
+      {
+        "index": 178,
+        "id": "webgpu-kernels/ai.onnx.Cosh",
+        "namespace": "ai.onnx",
+        "operation": "Cosh",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Cosh"
+      },
+      {
+        "index": 179,
+        "id": "webgpu-kernels/ai.onnx.CumProd",
+        "namespace": "ai.onnx",
+        "operation": "CumProd",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.CumProd"
+      },
+      {
+        "index": 180,
+        "id": "webgpu-kernels/ai.onnx.Cos",
+        "namespace": "ai.onnx",
+        "operation": "Cos",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Cos"
+      },
+      {
+        "index": 181,
+        "id": "webgpu-kernels/ai.onnx.ConvInteger",
+        "namespace": "ai.onnx",
+        "operation": "ConvInteger",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ConvInteger"
+      },
+      {
+        "index": 182,
+        "id": "webgpu-kernels/ai.onnx.ConstantOfShape",
+        "namespace": "ai.onnx",
+        "operation": "ConstantOfShape",
+        "platform": "WebGPU",
+        "category": "tensor-shape",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ConstantOfShape"
+      },
+      {
+        "index": 183,
+        "id": "webgpu-kernels/ai.onnx.Constant",
+        "namespace": "ai.onnx",
+        "operation": "Constant",
+        "platform": "WebGPU",
+        "category": "control-data",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Constant"
+      },
+      {
+        "index": 184,
+        "id": "webgpu-kernels/ai.onnx.CausalConvWithState",
+        "namespace": "ai.onnx",
+        "operation": "CausalConvWithState",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.CausalConvWithState"
+      },
+      {
+        "index": 185,
+        "id": "webgpu-kernels/ai.onnx.Celu",
+        "namespace": "ai.onnx",
+        "operation": "Celu",
+        "platform": "WebGPU",
+        "category": "activation",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Celu"
+      },
+      {
+        "index": 186,
+        "id": "webgpu-kernels/ai.onnx.Clip",
+        "namespace": "ai.onnx",
+        "operation": "Clip",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Clip"
+      },
+      {
+        "index": 187,
+        "id": "webgpu-kernels/ai.onnx.Col2Im",
+        "namespace": "ai.onnx",
+        "operation": "Col2Im",
+        "platform": "WebGPU",
+        "category": "convolution",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Col2Im"
+      },
+      {
+        "index": 188,
+        "id": "webgpu-kernels/ai.onnx.Ceil",
+        "namespace": "ai.onnx",
+        "operation": "Ceil",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Ceil"
+      },
+      {
+        "index": 189,
+        "id": "webgpu-kernels/ai.onnx.Compress",
+        "namespace": "ai.onnx",
+        "operation": "Compress",
+        "platform": "WebGPU",
+        "category": "indexing",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Compress"
+      },
+      {
+        "index": 190,
+        "id": "webgpu-kernels/ai.onnx.BitShift",
+        "namespace": "ai.onnx",
+        "operation": "BitShift",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.BitShift"
+      },
+      {
+        "index": 191,
+        "id": "webgpu-kernels/ai.onnx.BlackmanWindow",
+        "namespace": "ai.onnx",
+        "operation": "BlackmanWindow",
+        "platform": "WebGPU",
+        "category": "signal-image",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.BlackmanWindow"
+      },
+      {
+        "index": 192,
+        "id": "webgpu-kernels/ai.onnx.BitwiseNot",
+        "namespace": "ai.onnx",
+        "operation": "BitwiseNot",
+        "platform": "WebGPU",
+        "category": "logical-bitwise",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.BitwiseNot"
+      },
+      {
+        "index": 193,
+        "id": "webgpu-kernels/ai.onnx.Cast",
+        "namespace": "ai.onnx",
+        "operation": "Cast",
+        "platform": "WebGPU",
+        "category": "control-data",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Cast"
+      },
+      {
+        "index": 194,
+        "id": "webgpu-kernels/ai.onnx.CastLike",
+        "namespace": "ai.onnx",
+        "operation": "CastLike",
+        "platform": "WebGPU",
+        "category": "control-data",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.CastLike"
+      },
+      {
+        "index": 195,
+        "id": "webgpu-kernels/ai.onnx.Asinh",
+        "namespace": "ai.onnx",
+        "operation": "Asinh",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Asinh"
+      },
+      {
+        "index": 196,
+        "id": "webgpu-kernels/ai.onnx.Atanh",
+        "namespace": "ai.onnx",
+        "operation": "Atanh",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Atanh"
+      },
+      {
+        "index": 197,
+        "id": "webgpu-kernels/ai.onnx.AveragePool",
+        "namespace": "ai.onnx",
+        "operation": "AveragePool",
+        "platform": "WebGPU",
+        "category": "pooling",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.AveragePool"
+      },
+      {
+        "index": 198,
+        "id": "webgpu-kernels/ai.onnx.Asin",
+        "namespace": "ai.onnx",
+        "operation": "Asin",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Asin"
+      },
+      {
+        "index": 199,
+        "id": "webgpu-kernels/ai.onnx.BatchNormalization",
+        "namespace": "ai.onnx",
+        "operation": "BatchNormalization",
+        "platform": "WebGPU",
+        "category": "normalization",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.BatchNormalization"
+      },
+      {
+        "index": 200,
+        "id": "webgpu-kernels/ai.onnx.Atan",
+        "namespace": "ai.onnx",
+        "operation": "Atan",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Atan"
+      },
+      {
+        "index": 201,
+        "id": "webgpu-kernels/ai.onnx.BitCast",
+        "namespace": "ai.onnx",
+        "operation": "BitCast",
+        "platform": "WebGPU",
+        "category": "control-data",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.BitCast"
+      },
+      {
+        "index": 202,
+        "id": "webgpu-kernels/ai.onnx.Acos",
+        "namespace": "ai.onnx",
+        "operation": "Acos",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Acos"
+      },
+      {
+        "index": 203,
+        "id": "webgpu-kernels/ai.onnx.ArgMin",
+        "namespace": "ai.onnx",
+        "operation": "ArgMin",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ArgMin"
+      },
+      {
+        "index": 204,
+        "id": "webgpu-kernels/ai.onnx.Abs",
+        "namespace": "ai.onnx",
+        "operation": "Abs",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Abs"
+      },
+      {
+        "index": 205,
+        "id": "webgpu-kernels/ai.onnx.Acosh",
+        "namespace": "ai.onnx",
+        "operation": "Acosh",
+        "platform": "WebGPU",
+        "category": "math",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Acosh"
+      },
+      {
+        "index": 206,
+        "id": "webgpu-kernels/ai.onnx.ArgMax",
+        "namespace": "ai.onnx",
+        "operation": "ArgMax",
+        "platform": "WebGPU",
+        "category": "reduction",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.ArgMax"
+      },
+      {
+        "index": 207,
+        "id": "webgpu-kernels/ai.onnx.AffineGrid",
+        "namespace": "ai.onnx",
+        "operation": "AffineGrid",
+        "platform": "WebGPU",
+        "category": "signal-image",
+        "kernel_contract_version": 1,
+        "hub_url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.AffineGrid"
+      }
+    ]
+  },
+  "benchmark_presets": {
+    "schema_version": 1,
+    "default_id": "balanced",
+    "presets": [
+      {
+        "id": "quick",
+        "label": "Quick",
+        "description": "저사양/모바일 호환성 확인용",
+        "rows": 256,
+        "cols": 256,
+        "warmup": 1,
+        "iterations": 3,
+        "elements": 65536
+      },
+      {
+        "id": "balanced",
+        "label": "Balanced",
+        "description": "기본 CPU vs WebGPU 비교",
+        "rows": 1024,
+        "cols": 1024,
+        "warmup": 2,
+        "iterations": 5,
+        "elements": 1048576
+      },
+      {
+        "id": "large",
+        "label": "Large",
+        "description": "GPU 가속 효과가 더 잘 드러나는 대형 입력",
+        "rows": 2048,
+        "cols": 1024,
+        "warmup": 2,
+        "iterations": 7,
+        "elements": 2097152
+      },
+      {
+        "id": "stress",
+        "label": "Stress",
+        "description": "브라우저 메모리 사용량이 큰 상한 실험",
+        "rows": 2048,
+        "cols": 2048,
+        "warmup": 2,
+        "iterations": 5,
+        "elements": 4194304
+      }
+    ],
+    "limits": {
+      "min_rows": 64,
+      "max_rows": 4096,
+      "min_cols": 64,
+      "max_cols": 4096,
+      "max_elements": 4194304,
+      "max_warmup": 10,
+      "max_iterations": 20
+    }
+  },
+  "readiness_rubric": {
+    "schema_version": 1,
+    "title": "WebAI Ready Score rubric",
+    "official_standard": false,
+    "total_points": 100,
+    "criteria": [
+      {
+        "id": "webgpu_api",
+        "label": "WebGPU API 존재",
+        "points": 45,
+        "condition": "\"gpu\" in navigator"
+      },
+      {
+        "id": "adapter",
+        "label": "GPU adapter 획득",
+        "points": 15,
+        "condition": "navigator.gpu.requestAdapter() 성공"
+      },
+      {
+        "id": "device",
+        "label": "GPU device 생성",
+        "points": 10,
+        "condition": "adapter.requestDevice() 성공"
+      },
+      {
+        "id": "shader_f16",
+        "label": "shader-f16 feature",
+        "points": 5,
+        "condition": "adapter/device features에 shader-f16 포함"
+      },
+      {
+        "id": "buffer_256m",
+        "label": "Max buffer ≥ 256 MiB",
+        "points": 10,
+        "condition": "maxBufferSize >= 268435456"
+      },
+      {
+        "id": "workgroups",
+        "label": "Compute workgroups ≥ 65,535",
+        "points": 8,
+        "condition": "maxComputeWorkgroupsPerDimension >= 65535"
+      },
+      {
+        "id": "hf_loader",
+        "label": "Hugging Face loader import",
+        "points": 4,
+        "condition": "@huggingface/kernels module import 성공"
+      },
+      {
+        "id": "kernel_verified",
+        "label": "Kernel 실행 확인",
+        "points": 3,
+        "condition": "선택 kernel 실행 성공"
+      }
+    ],
+    "grades": [
+      {
+        "min": 90,
+        "label": "Excellent"
+      },
+      {
+        "min": 75,
+        "label": "Ready"
+      },
+      {
+        "min": 55,
+        "label": "Limited"
+      },
+      {
+        "min": 0,
+        "label": "Unsupported"
+      }
+    ],
+    "implementation": "site/js/readiness.js"
+  },
+  "reference_benchmarks": {
+    "schema_version": 1,
+    "title": "Hugging Face WebGPU kernels reference benchmark",
+    "source": "Hugging Face blog — Introducing @huggingface/kernels: 200+ WebGPU Kernels for Local AI",
+    "source_url": "https://huggingface.co/blog/webgpu-kernels",
+    "published_at": "2026-09-01",
+    "hardware": "Apple M4 GPU",
+    "comparator": "ONNX Runtime Web 1.30.0-dev.20260826-b1f76d586a",
+    "methodology": "GPU work timing; setup such as kernel loading, session creation, upload, shader compilation and readback excluded.",
+    "total_operations": 207,
+    "starting_test_cases": 1756,
+    "comparable_cases": 809,
+    "wins": 629,
+    "losses": 176,
+    "ties": 4,
+    "geometric_mean_speedup": 2.57,
+    "median_speedup": 1.9,
+    "operations": [
+      {
+        "operation": "Add",
+        "compared_cases": 5,
+        "hf_kernel_ms": 0.064,
+        "ort_webgpu_ms": 0.227,
+        "speedup": 3.52
+      },
+      {
+        "operation": "MatMul",
+        "compared_cases": 29,
+        "hf_kernel_ms": 0.115,
+        "ort_webgpu_ms": 0.131,
+        "speedup": 1.14
+      },
+      {
+        "operation": "Softmax",
+        "compared_cases": 12,
+        "hf_kernel_ms": 0.114,
+        "ort_webgpu_ms": 0.24,
+        "speedup": 2.11
+      },
+      {
+        "operation": "LayerNormalization",
+        "compared_cases": 6,
+        "hf_kernel_ms": 0.061,
+        "ort_webgpu_ms": 0.135,
+        "speedup": 2.22
+      }
+    ],
+    "outlier_examples": [
+      {
+        "operation": "Einsum",
+        "case": "i,ij,j size 4096",
+        "hf_kernel_ms": 0.136,
+        "ort_webgpu_ms": 1396,
+        "speedup_note": ">10000x"
+      },
+      {
+        "operation": "CumSum",
+        "case": "row-wise [256, 4096]",
+        "hf_kernel_ms": 0.016,
+        "ort_webgpu_ms": 4.784,
+        "speedup": 301
+      }
+    ],
+    "warning": "These are upstream reference measurements on one hardware/software setup, not LocalWebAI Lab device results."
+  },
+  "compatibility": {
+    "schema_version": 1,
+    "title": "WebGPU runtime compatibility checklist",
+    "principle": "Actual availability depends on browser, operating system, GPU and driver. Runtime detection is authoritative.",
+    "checks": [
+      {
+        "id": "secure_context",
+        "label": "보안 컨텍스트",
+        "required": true,
+        "test": "HTTPS 또는 localhost",
+        "failure": "GitHub Pages는 HTTPS이므로 배포 시 충족"
+      },
+      {
+        "id": "navigator_gpu",
+        "label": "WebGPU API",
+        "required": true,
+        "test": "\"gpu\" in navigator",
+        "failure": "브라우저/OS/GPU/Driver 조합에서 WebGPU 활성화 필요"
+      },
+      {
+        "id": "adapter",
+        "label": "GPU adapter",
+        "required": true,
+        "test": "requestAdapter()",
+        "failure": "호환 GPU adapter 없음 또는 정책/driver 제한"
+      },
+      {
+        "id": "device",
+        "label": "GPU device",
+        "required": true,
+        "test": "requestDevice()",
+        "failure": "device 생성 실패 시 GPU benchmark 중단"
+      },
+      {
+        "id": "network_hf",
+        "label": "Hugging Face kernel network access",
+        "required": false,
+        "test": "CDN module + Hub kernel load",
+        "failure": "실패 시 Raw WebGPU Add fallback"
+      },
+      {
+        "id": "shader_f16",
+        "label": "shader-f16",
+        "required": false,
+        "test": "feature detection",
+        "failure": "일부 f16 최적화 경로 제한"
+      }
+    ],
+    "notes": [
+      "사용자 에이전트 문자열만으로 지원 여부를 단정하지 않습니다.",
+      "실제 requestAdapter/requestDevice 결과를 우선합니다.",
+      "기업/학교 환경의 브라우저 정책이 WebGPU를 비활성화할 수 있습니다."
+    ]
+  },
+  "hardware_profiles": {
+    "schema_version": 1,
+    "title": "Synthetic hardware profiles for UI/testing",
+    "synthetic": true,
+    "profiles": [
+      {
+        "id": "unsupported",
+        "label": "WebGPU 미지원",
+        "webgpu": false,
+        "adapter": false,
+        "device": false,
+        "shader_f16": false,
+        "max_buffer_bytes": 0,
+        "hf_loader": false,
+        "kernel_verified": false,
+        "expected_score": 0
+      },
+      {
+        "id": "basic",
+        "label": "기본 WebGPU",
+        "webgpu": true,
+        "adapter": true,
+        "device": true,
+        "shader_f16": false,
+        "max_buffer_bytes": 134217728,
+        "max_compute_workgroups_per_dimension": 65535,
+        "hf_loader": false,
+        "kernel_verified": false,
+        "expected_score": 88
+      },
+      {
+        "id": "ready",
+        "label": "WebAI Ready",
+        "webgpu": true,
+        "adapter": true,
+        "device": true,
+        "shader_f16": true,
+        "max_buffer_bytes": 268435456,
+        "max_compute_workgroups_per_dimension": 65535,
+        "hf_loader": true,
+        "kernel_verified": true,
+        "expected_score": 100
+      }
+    ],
+    "notice": "UI/error-state regression testing용 합성 데이터입니다. 실제 GPU 제품 성능표가 아닙니다."
+  },
+  "roadmap": {
+    "schema_version": 1,
+    "items": [
+      {
+        "id": "embedding",
+        "title": "Embedding",
+        "stage": "planned",
+        "description": "텍스트 임베딩 모델의 브라우저 실행성, 초기 로딩, 메모리 사용량 비교",
+        "metrics": [
+          "load_ms",
+          "inference_ms",
+          "tokens_per_second",
+          "memory_estimate"
+        ]
+      },
+      {
+        "id": "image-processing",
+        "title": "Image Processing",
+        "stage": "planned",
+        "description": "Resize/Normalize/Filter 계열 GPU 처리 성능 비교",
+        "metrics": [
+          "cpu_ms",
+          "webgpu_ms",
+          "speedup",
+          "pixels_per_second"
+        ]
+      },
+      {
+        "id": "small-vision-model",
+        "title": "Small Vision Model",
+        "stage": "planned",
+        "description": "경량 비전 모델의 로컬 추론 가능성 및 cold/warm latency 측정",
+        "metrics": [
+          "cold_start_ms",
+          "warm_inference_ms",
+          "model_size_mb"
+        ]
+      },
+      {
+        "id": "local-classification",
+        "title": "Local Classification",
+        "stage": "planned",
+        "description": "원본 데이터를 외부 서버로 전송하지 않는 로컬 분류 흐름",
+        "metrics": [
+          "inference_ms",
+          "confidence",
+          "privacy_mode"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "schema_version": 1,
+    "items": [
+      {
+        "id": "kernels-vs-models",
+        "question": "207 kernels는 207개의 완성 AI 모델인가요?",
+        "answer": "아닙니다. kernel은 Add, MatMul, Softmax처럼 모델 내부에서 사용되는 개별 GPU 연산 단위입니다. 여러 kernel, runtime, 모델 가중치가 결합되어 추론 파이프라인이 됩니다."
+      },
+      {
+        "id": "slower-gpu",
+        "question": "왜 제 PC에서는 WebGPU가 더 느릴 수 있나요?",
+        "answer": "작은 연산에서는 GPU dispatch, 데이터 업로드, readback 비용이 계산량보다 클 수 있습니다. 브라우저, OS, GPU, driver, 전원 모드, input shape도 결과에 영향을 줍니다."
+      },
+      {
+        "id": "score-standard",
+        "question": "WebAI Ready 점수는 공식 표준인가요?",
+        "answer": "아닙니다. LocalWebAI Lab의 휴리스틱 점수입니다. WebGPU adapter/device, limit, shader-f16, Hugging Face loader/kernel 실행 여부를 합산합니다."
+      },
+      {
+        "id": "privacy",
+        "question": "벤치마크 데이터가 서버로 전송되나요?",
+        "answer": "LocalWebAI Lab의 측정 기록과 설정은 기본적으로 현재 브라우저 LocalStorage에 저장됩니다. Hugging Face kernel을 사용할 때에는 모듈과 kernel 리소스를 네트워크에서 다운로드합니다."
+      },
+      {
+        "id": "raw-fallback",
+        "question": "Hugging Face kernel 로딩에 실패하면 어떻게 되나요?",
+        "answer": "Matrix/Add 벤치마크는 자체 WGSL Raw WebGPU fallback을 실행합니다. 결과의 Engine 필드에서 어떤 경로가 사용되었는지 확인할 수 있습니다."
+      },
+      {
+        "id": "reference-benchmark",
+        "question": "공식 2.57× 수치와 제 결과가 왜 다른가요?",
+        "answer": "Hugging Face 공개 수치는 Apple M4 GPU에서 setup 비용을 제외한 GPU work를 측정한 비교입니다. LocalWebAI Lab의 기본 측정은 호출 완료까지의 end-to-end 경로이므로 동일한 수치를 기대하면 안 됩니다."
+      }
+    ]
+  },
+  "sources": {
+    "schema_version": 1,
+    "verified_at": "2026-09-07",
+    "sources": [
+      {
+        "id": "hf-blog",
+        "title": "Introducing @huggingface/kernels: 200+ WebGPU Kernels for Local AI",
+        "publisher": "Hugging Face",
+        "published_at": "2026-09-01",
+        "url": "https://huggingface.co/blog/webgpu-kernels",
+        "supports": [
+          "207 kernel count",
+          "package preview",
+          "repository artifact structure",
+          "reference benchmark metrics",
+          "Fleet context"
+        ]
+      },
+      {
+        "id": "hf-org",
+        "title": "WebGPU Kernels Community — 207 kernels",
+        "publisher": "Hugging Face",
+        "url": "https://huggingface.co/webgpu-kernels/kernels",
+        "supports": [
+          "exact public repository names",
+          "WebGPU platform listing"
+        ]
+      },
+      {
+        "id": "hf-add",
+        "title": "webgpu-kernels/ai.onnx.Add",
+        "publisher": "Hugging Face",
+        "url": "https://huggingface.co/kernels/webgpu-kernels/ai.onnx.Add",
+        "supports": [
+          "first benchmark kernel identity",
+          "kernel card pattern"
+        ]
+      }
+    ]
+  }
+}

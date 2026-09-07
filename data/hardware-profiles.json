@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "title": "Synthetic hardware profiles for UI/testing",
+  "synthetic": true,
+  "profiles": [
+    {
+      "id": "unsupported",
+      "label": "WebGPU 미지원",
+      "webgpu": false,
+      "adapter": false,
+      "device": false,
+      "shader_f16": false,
+      "max_buffer_bytes": 0,
+      "hf_loader": false,
+      "kernel_verified": false,
+      "expected_score": 0
+    },
+    {
+      "id": "basic",
+      "label": "기본 WebGPU",
+      "webgpu": true,
+      "adapter": true,
+      "device": true,
+      "shader_f16": false,
+      "max_buffer_bytes": 134217728,
+      "max_compute_workgroups_per_dimension": 65535,
+      "hf_loader": false,
+      "kernel_verified": false,
+      "expected_score": 88
+    },
+    {
+      "id": "ready",
+      "label": "WebAI Ready",
+      "webgpu": true,
+      "adapter": true,
+      "device": true,
+      "shader_f16": true,
+      "max_buffer_bytes": 268435456,
+      "max_compute_workgroups_per_dimension": 65535,
+      "hf_loader": true,
+      "kernel_verified": true,
+      "expected_score": 100
+    }
+  ],
+  "notice": "UI/error-state regression testing용 합성 데이터입니다. 실제 GPU 제품 성능표가 아닙니다."
+}
